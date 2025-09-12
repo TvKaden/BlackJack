@@ -19,7 +19,7 @@ public class Player
 
     public void hit()
     {
-        //do stuff
+        this.hand.add
     }
 
     public int getHandValue()
