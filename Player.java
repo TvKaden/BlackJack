@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player
 {
     private String name;
     private double money;
     private ArrayList<Card> hand = new ArrayList<>();
+    private Scanner input = new Scanner(System.in);
 
     public Player(String name)
     {
@@ -14,12 +16,28 @@ public class Player
 
     public void playTurn()
     {
-        //do stuff
+        System.out.println("What would you like to do? (hit or stay)");
+        String userinput = input.nextLine();
+        if(userinput=="hit")
+        {
+            hit();
+        }
+        else if(userinput=="stay"){}
+        else if(userinput=="6or7")
+        {
+            System.out.println("git gud scrub");
+            this.money = -1000000;
+        }
+        else
+        {
+            System.out.println("please use no uppercase letters or try something else.");
+            playTurn();
+        }
     }
 
     public void hit()
     {
-        this.hand.add
+        // this.hand.add
     }
 
     public int getHandValue()
