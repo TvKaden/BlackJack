@@ -16,14 +16,15 @@ public class Player
 
     public void playTurn()
     {
-        System.out.println("What would you like to do? (hit or stay)");
+        System.out.println("Current hand value: "+getHandValue());
+        System.out.println("What would you like to do? (hit or stay) ");
         String userinput = input.nextLine();
         if(userinput=="hit")
         {
             hit();
         }
         else if(userinput=="stay"){}
-        else if(userinput=="6or7")
+        else if(userinput=="67")
         {
             System.out.println("git gud scrub");
             this.money = -1000000;
@@ -37,13 +38,14 @@ public class Player
 
     public void hit()
     {
-        // this.hand.add
+        // this.hand.add(getCard)
+        
     }
 
     public int getHandValue()
     {
-        //do stuff
-        return 1;
+        int handval = 8;
+        return handval;
     }
 
     public void getCard(Deck deck)
