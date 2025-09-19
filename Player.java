@@ -21,7 +21,7 @@ public class Player
         String userinput = input.nextLine();
         if(userinput=="hit")
         {
-            hit();
+            // hit();
         }
         else if(userinput=="stay"){}
         else if(userinput=="67")
@@ -36,20 +36,25 @@ public class Player
         }
     }
 
-    public void hit()
+    public void hit(Deck deck)
     {
-        // this.hand.add(getCard)
+
+        // this.hand.add(deck.getCard());
         
     }
 
     public int getHandValue()
     {
-        int handval = 8;
+        for(int i=0;i<this.hand.size();i++)
+        {
+           
+        }
+        int handval = 5;
         return handval;
     }
 
     public void getCard(Deck deck)
     {
-        //do stuff
+        deck.getTopCard();
     }
 }
