@@ -45,12 +45,32 @@ public class Player
 
     public int getHandValue()
     {
-        for(int i=0;i<this.hand.size();i++)
+        int handVal = 0;
+        for(int i=0;i<this.hand.size()-1;i++)
         {
-           
+            if(this.hand.get(i).getface()=="A")
+            {
+                int handVal1 = handVal+1;
+                int handVal2 = handVal+11;
+                if(handVal2>21)
+                {
+                    handVal = handVal1;
+                }
+                else if(handVal2==21)
+                {
+                    handVal = handVal2;
+                }
+                else
+                {
+                    handVal = handVal2;
+                }
+            }
+            else
+            {
+                handVal += this.hand.get(i).getvalue();
+            }
         }
-        int handval = 5;
-        return handval;
+        return handVal;
     }
 
     public void getCard(Deck deck)
