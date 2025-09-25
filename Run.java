@@ -7,10 +7,11 @@ public class Run {
         Deck deck = new Deck();
         ArrayList<Player> players = new ArrayList<>();
         Scanner input = new Scanner(System.in);
+        ArrayList<Integer> bets = new ArrayList<>();
 
         for(Card card : deck.getCards())
         {
-            // System.out.println(card);
+            System.out.println(card);
         }
         System.out.println("How many people are playing? (1-4) ");
         int userInputUno = input.nextInt();
@@ -22,7 +23,9 @@ public class Run {
                 String userInput = input.nextLine();
                 Player playerGuy = new Player(userInput);
                 players.add(playerGuy);
-
+                // System.out.println("How much would player "+playerNum+" like to bet? ");
+                // int userBet = input.nextInt();
+                // bets.add(userBet);
             }
         }
         else
@@ -39,7 +42,14 @@ public class Run {
         {
             for(int i=0;i<userInputUno;i++)
             {
-                players.get(i).playTurn(deck);
+                if(players.get(i).getHandValue()<21)
+                {
+                    players.get(i).playTurn(deck);
+                }
+                else
+                {
+                    System.out.println(players.get(i).getName()+" bust");
+                }
             }
         }
     }

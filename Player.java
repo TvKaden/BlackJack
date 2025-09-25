@@ -16,19 +16,23 @@ public class Player
 
     public void playTurn(Deck deck)
     {
+        String teString = "String";
         System.out.println("Current hand value: "+getHandValue());
         System.out.println("What would you like to do "+name+"?(hit or stay) ");
-        String userinput = input.nextLine();
-        if(userinput=="hit")
+        String userInput = input.nextLine();
+
+        if(userInput=="hit")
         {
             hit(deck);
+            if(bustOrNah()=="isFine")
             playTurn(deck);
         }
-        else if(userinput=="stay"){}
-        else if(userinput=="67")
+        else if(userInput=="stay"){}
+        else if(userInput=="String")
         {
             System.out.println("git gud scrub");
             this.money = -1000000;
+            System.out.println(money);
         }
         else
         {
@@ -77,5 +81,26 @@ public class Player
     public void getCard(Deck deck)
     {
         deck.getTopCard();
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public String bustOrNah()
+    {
+        if(getHandValue()>21)
+        {
+            return "Bust";
+        }
+        else if(getHandValue()==21)
+        {
+            return "Winning";
+        }
+        else
+        {
+            return "isFine";
+        }
     }
 }
