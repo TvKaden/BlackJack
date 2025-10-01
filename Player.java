@@ -16,19 +16,20 @@ public class Player
 
     public void playTurn(Deck deck)
     {
-        String teString = "String";
         System.out.println("Current hand value: "+getHandValue());
         System.out.println("What would you like to do "+name+"?(hit or stay) ");
         String userInput = input.nextLine();
 
-        if(userInput=="hit")
+        if(userInput.equals("hit"))
         {
             hit(deck);
-            if(bustOrNah()=="isFine")
-            playTurn(deck);
+            if(bustOrNah().equals("isFine"))
+            {
+                playTurn(deck);
+            }
         }
-        else if(userInput=="stay"){}
-        else if(userInput=="String")
+        else if(userInput.equals("stay")){}
+        else if(userInput.equals("67"))
         {
             System.out.println("git gud scrub");
             this.money = -1000000;
@@ -44,14 +45,15 @@ public class Player
     public void hit(Deck deck)
     {
 
-        // this.hand.add(getCard(deck));
+        this.hand.add(getCard(deck));
+        System.out.println(this.hand.get(this.hand.size()-1));
         
     }
 
     public int getHandValue()
     {
         int handVal = 0;
-        for(int i=0;i<this.hand.size()-1;i++)
+        for(int i=0;i<this.hand.size();i++)
         {
             if(this.hand.get(i).getface()=="A")
             {
@@ -78,9 +80,9 @@ public class Player
         return handVal;
     }
 
-    public void getCard(Deck deck)
+    public Card getCard(Deck deck)
     {
-        deck.getTopCard();
+        return deck.getTopCard();
     }
 
     public String getName()

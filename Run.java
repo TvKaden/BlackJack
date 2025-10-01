@@ -7,6 +7,7 @@ public class Run {
         Deck deck = new Deck();
         ArrayList<Player> players = new ArrayList<>();
         Scanner input = new Scanner(System.in);
+        Dealer dealer = new Dealer();
         ArrayList<Integer> bets = new ArrayList<>();
 
         for(Card card : deck.getCards())
@@ -51,6 +52,31 @@ public class Run {
                     System.out.println(players.get(i).getName()+" bust");
                 }
             }
+            dealer.playTurn(deck);
+            for(int i=0;i<userInputUno;i++)
+            {
+                int winnings = 0;
+                if(players.get(i).getHandValue()>dealer.getHandValue())
+                {
+                    winnings = bets.get(i)*2;
+                }
+                else if(players.get(i).getHandValue()==dealer.getHandValue())
+                {
+                    winnings = bets.get(i);
+                }
+                if(players.get(i).getHandValue()<dealer.getHandValue())
+                {
+                    winnings = bets.get(i)*-1;
+                }              
+            }
+            System.out.println("Would you like to continue? (y/n) ");
+            String userIn = input.nextLine();
+            if(userIn.equals("n"))
+            {
+                gameState=true;
+            }
+            else if(userIn.equals("y")){}
+            else{}
         }
     }
 }
