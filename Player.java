@@ -44,10 +44,8 @@ public class Player
 
     public void hit(Deck deck)
     {
-
         this.hand.add(getCard(deck));
-        System.out.println(this.hand.get(this.hand.size()-1));
-        
+        System.out.println(this.hand.get(this.hand.size()-1));   
     }
 
     public int getHandValue()
@@ -103,6 +101,14 @@ public class Player
         else
         {
             return "isFine";
+        }
+    }
+
+    public void ResetHand()
+    {
+        for(int i=0;i<this.hand.size();i++)
+        {
+            this.hand.remove(i);
         }
     }
 }

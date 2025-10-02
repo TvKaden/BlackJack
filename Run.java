@@ -8,7 +8,7 @@ public class Run {
         ArrayList<Player> players = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         Dealer dealer = new Dealer();
-        ArrayList<Integer> bets = new ArrayList<>();
+        // ArrayList<Integer> bets = new ArrayList<>();
 
         for(Card card : deck.getCards())
         {
@@ -33,14 +33,19 @@ public class Run {
         {
             System.out.println("Goodbye");
         }
-        for(int i=0;i<userInputUno;i++)
-        {
-            players.get(i).hit(deck);
-            players.get(i).hit(deck);
-        }
+
         boolean gameState=false;
         while (gameState==false)
         {
+
+            for(int i=0;i<userInputUno;i++)
+                {
+                    players.get(i).hit(deck);
+                    players.get(i).hit(deck);
+                }
+            dealer.hit(deck);
+            dealer.hit(deck);
+            dealer.ShowCard();
             for(int i=0;i<userInputUno;i++)
             {
                 if(players.get(i).getHandValue()<21)
@@ -53,21 +58,45 @@ public class Run {
                 }
             }
             dealer.playTurn(deck);
+            System.out.println("Dealers hand is "+dealer.getHandValue());
             for(int i=0;i<userInputUno;i++)
             {
-                int winnings = 0;
-                if(players.get(i).getHandValue()>dealer.getHandValue())
+                // int winnings = 0;
+                if(dealer.getHandValue()>22)
                 {
-                    winnings = bets.get(i)*2;
+                    if(players.get(i).getHandValue()<22)
+                        {
+                            // winnings = bets.get(i)*2;
+                            System.out.println(players.get(i).getName()+" Won");
+                        }
+                    else
+                        {
+                            // winnings = bets.get(i)*-1;
+                            System.out.println(players.get(i).getName()+" Lost");
+                        }   
                 }
-                else if(players.get(i).getHandValue()==dealer.getHandValue())
+                else 
                 {
-                    winnings = bets.get(i);
+                    if(players.get(i).getHandValue()>21)
+                    {
+                        System.out.println(players.get(i).getName()+" Bust");
+                    }
+                    else if(players.get(i).getHandValue()>dealer.getHandValue())
+                        {
+                            // winnings = bets.get(i)*2;
+                            System.out.println(players.get(i).getName()+" Won");
+                        }
+                    else if(players.get(i).getHandValue()==dealer.getHandValue())
+                        {
+                            // winnings = bets.get(i);
+                            System.out.println(players.get(i).getName()+" Tied");
+                        }
+                    else
+                        {
+                            // winnings = bets.get(i)*-1;
+                            System.out.println(players.get(i).getName()+" Lost");
+                        }   
                 }
-                if(players.get(i).getHandValue()<dealer.getHandValue())
-                {
-                    winnings = bets.get(i)*-1;
-                }              
             }
             System.out.println("Would you like to continue? (y/n) ");
             String userIn = input.nextLine();
@@ -75,8 +104,26 @@ public class Run {
             {
                 gameState=true;
             }
-            else if(userIn.equals("y")){}
-            else{}
+            else if(userIn.equals("y"))
+            {
+                deck.shuffle();
+                for(int i=0;i<userInputUno;i++)
+                {
+                    players.get(i).ResetHand();
+                }
+                dealer.ResetHand();
+                System.out.println(dealer.getHandValue());
+            }
+            else
+            {
+                deck.shuffle();
+                for(int i=0;i<userInputUno;i++)
+                {
+                    players.get(i).ResetHand();
+                }
+                dealer.ResetHand();
+                System.out.println(dealer.getHandValue());
+            }
         }
     }
 }
