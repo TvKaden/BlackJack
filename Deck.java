@@ -44,4 +44,9 @@ public class Deck
     {
         return this.cards;
     }
+
+    public void getCardsBack(Player player)
+    {
+        this.cards.add(player.returnTopCard())      
+    }
 }

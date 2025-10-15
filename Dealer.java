@@ -64,12 +64,4 @@ public class Dealer extends Player
         System.out.println(this.hand.get(this.hand.size()-1));
     }
 
-    public void ResetHand()
-    {
-        for(int i=0;i<this.hand.size();i++)
-        {
-            this.hand.remove(i);
-        }
-    }
-
 }

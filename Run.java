@@ -8,7 +8,7 @@ public class Run {
         ArrayList<Player> players = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         Dealer dealer = new Dealer();
-        // ArrayList<Integer> bets = new ArrayList<>();
+        ArrayList<Integer> bets = new ArrayList<>();
 
         for(Card card : deck.getCards())
         {
@@ -24,9 +24,10 @@ public class Run {
                 String userInput = input.nextLine();
                 Player playerGuy = new Player(userInput);
                 players.add(playerGuy);
-                // System.out.println("How much would player "+playerNum+" like to bet? ");
-                // int userBet = input.nextInt();
-                // bets.add(userBet);
+                System.out.println("How much would player "+playerNum+" like to bet? ");
+                double userBet = input.nextInt();
+                players.get(i).betMoney(userBet);
+                bets.add(userBet);
             }
         }
         else
@@ -61,39 +62,35 @@ public class Run {
             System.out.println("Dealers hand is "+dealer.getHandValue());
             for(int i=0;i<userInputUno;i++)
             {
-                // int winnings = 0;
+                double winnings = 0;
                 if(dealer.getHandValue()>22)
                 {
                     if(players.get(i).getHandValue()<22)
                         {
-                            // winnings = bets.get(i)*2;
+                            winnings = bets.get(i)*2;
                             System.out.println(players.get(i).getName()+" Won");
                         }
                     else
                         {
-                            // winnings = bets.get(i)*-1;
+                            winnings = bets.get(i)*-1;
                             System.out.println(players.get(i).getName()+" Lost");
                         }   
                 }
                 else 
                 {
-                    if(players.get(i).getHandValue()>21)
-                    {
-                        System.out.println(players.get(i).getName()+" Bust");
-                    }
-                    else if(players.get(i).getHandValue()>dealer.getHandValue())
+                    if(players.get(i).getHandValue()>dealer.getHandValue())
                         {
-                            // winnings = bets.get(i)*2;
+                            winnings = bets.get(i)*2;
                             System.out.println(players.get(i).getName()+" Won");
                         }
                     else if(players.get(i).getHandValue()==dealer.getHandValue())
                         {
-                            // winnings = bets.get(i);
+                            winnings = bets.get(i);
                             System.out.println(players.get(i).getName()+" Tied");
                         }
                     else
                         {
-                            // winnings = bets.get(i)*-1;
+                            winnings = bets.get(i)*-1;
                             System.out.println(players.get(i).getName()+" Lost");
                         }   
                 }
@@ -106,24 +103,13 @@ public class Run {
             }
             else if(userIn.equals("y"))
             {
-                deck.shuffle();
-                for(int i=0;i<userInputUno;i++)
+                for(int i=0;i<players.size();i++)
                 {
-                    players.get(i).ResetHand();
+                    deck.getCardsBack(players.get(i))                    
                 }
-                dealer.ResetHand();
-                System.out.println(dealer.getHandValue());
             }
             else
-            {
-                deck.shuffle();
-                for(int i=0;i<userInputUno;i++)
-                {
-                    players.get(i).ResetHand();
-                }
-                dealer.ResetHand();
-                System.out.println(dealer.getHandValue());
-            }
+            {}
         }
     }
 }

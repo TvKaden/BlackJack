@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.smartcardio.Card;
+
 public class Player
 {
     private String name;
@@ -88,6 +90,11 @@ public class Player
         return this.name;
     }
 
+    public void betMoney(double val)
+    {
+        this.money = this.money-val;
+    }
+
     public String bustOrNah()
     {
         if(getHandValue()>21)
@@ -104,11 +111,13 @@ public class Player
         }
     }
 
-    public void ResetHand()
+    public Card returnCards()
     {
-        for(int i=0;i<this.hand.size();i++)
+        for(int i=0; i<this.hand.size();i++)
         {
-            this.hand.remove(i);
+            Card topCard = this.cards.get(0);
+            this.cards.remove(0);
+            return topCard;
         }
     }
 }
