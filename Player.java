@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.smartcardio.Card;
+// import javax.smartcardio.Card;
 
 public class Player
 {
@@ -111,13 +111,10 @@ public class Player
         }
     }
 
-    public Card returnCards()
-    {
-        for(int i=0; i<this.hand.size();i++)
-        {
-            Card topCard = this.cards.get(0);
-            this.cards.remove(0);
-            return topCard;
-        }
-    }
+    // public Card returnCards()
+    // {
+    //     Card topCard = this.hand.get(1);
+    //     this.hand.remove(1);  
+    //     return topCard;
+    // }
 }

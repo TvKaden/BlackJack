@@ -8,7 +8,7 @@ public class Run {
         ArrayList<Player> players = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         Dealer dealer = new Dealer();
-        ArrayList<Integer> bets = new ArrayList<>();
+        ArrayList<Double> bets = new ArrayList<>();
 
         for(Card card : deck.getCards())
         {
@@ -18,17 +18,13 @@ public class Run {
         int userInputUno = input.nextInt();
         if(userInputUno<5&&userInputUno>0){
         for(int i=0;i<userInputUno;i++)
-            {
-                int playerNum = i+1;
-                System.out.println("What is the name of player "+playerNum+"? ");
-                String userInput = input.nextLine();
-                Player playerGuy = new Player(userInput);
-                players.add(playerGuy);
-                System.out.println("How much would player "+playerNum+" like to bet? ");
-                double userBet = input.nextInt();
-                players.get(i).betMoney(userBet);
-                bets.add(userBet);
-            }
+        {
+            int playerNum = i+1;
+            System.out.println("What is the name of player "+playerNum+"? ");
+            String userInput = input.nextLine();
+            Player playerGuy = new Player(userInput);
+            players.add(playerGuy);
+        }
         }
         else
         {
@@ -38,7 +34,13 @@ public class Run {
         boolean gameState=false;
         while (gameState==false)
         {
-
+            for(int i=0;i<players.size();i++)
+            {
+                System.out.println("How much would you like to bet "+players.get(i).getName()+"? ");
+                double userBet = input.nextInt();
+                players.get(i).betMoney(userBet);
+                bets.add(userBet);
+            }
             for(int i=0;i<userInputUno;i++)
                 {
                     players.get(i).hit(deck);
@@ -105,11 +107,20 @@ public class Run {
             {
                 for(int i=0;i<players.size();i++)
                 {
-                    deck.getCardsBack(players.get(i))                    
+                    deck.getCardsBack(players.get(i));      
                 }
+                deck.getCardsBack(dealer);      
+                deck.shuffle();   
             }
             else
-            {}
+            {
+                for(int i=0;i<players.size();i++)
+                {
+                    deck.getCardsBack(players.get(i));      
+                }
+                deck.getCardsBack(dealer);      
+                deck.shuffle(); 
+            }
         }
     }
 }

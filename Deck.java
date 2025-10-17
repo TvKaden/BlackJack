@@ -9,6 +9,7 @@ public class Deck
         String[] suits = new String[] {"Hearts", "Spades", "Diamonds", "Clubs"};
         String[] faces = new String[] {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
         int[] values = new int[] {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
+        
 
         for(String suit : suits) 
         {
@@ -45,8 +46,13 @@ public class Deck
         return this.cards;
     }
 
-    public void getCardsBack(Player player)
-    {
-        this.cards.add(player.returnTopCard())      
-    }
+    // public void getCardsBack(Player player)
+    // {
+    //     this.cards.add(givingCards(player));  
+    // }
+
+    // public Card givingCards(Player player)
+    // {
+    //     return player.returnCards();
+    // }
 }
