@@ -16,6 +16,7 @@ public class Run {
         }
         System.out.println("How many people are playing? (1-4) ");
         int userInputUno = input.nextInt();
+        input.nextLine();
         if(userInputUno<5&&userInputUno>0){
         for(int i=0;i<userInputUno;i++)
         {
@@ -38,6 +39,7 @@ public class Run {
             {
                 System.out.println("How much would you like to bet "+players.get(i).getName()+"? ");
                 double userBet = input.nextInt();
+                input.nextLine();
                 players.get(i).betMoney(userBet);
                 bets.add(userBet);
             }
@@ -62,6 +64,10 @@ public class Run {
             }
             dealer.playTurn(deck);
             System.out.println("Dealers hand is "+dealer.getHandValue());
+            for(int i=0; i<players.size();i++)
+            {
+                System.out.println(players.get(i).getName()+" hand is "+players.get(i).getHandValue());
+            }
             for(int i=0;i<userInputUno;i++)
             {
                 double winnings = 0;
@@ -74,7 +80,6 @@ public class Run {
                         }
                     else
                         {
-                            winnings = bets.get(i)*-1;
                             System.out.println(players.get(i).getName()+" Lost");
                         }   
                 }
@@ -92,7 +97,7 @@ public class Run {
                         }
                     else
                         {
-                            winnings = bets.get(i)*-1;
+
                             System.out.println(players.get(i).getName()+" Lost");
                         }   
                 }

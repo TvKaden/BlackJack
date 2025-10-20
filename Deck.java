@@ -46,13 +46,23 @@ public class Deck
         return this.cards;
     }
 
-    // public void getCardsBack(Player player)
-    // {
-    //     this.cards.add(givingCards(player));  
-    // }
+    public void getCardsBack(Player player)
+    {
+        this.cards.add(givingCards(player));  
+    }
 
-    // public Card givingCards(Player player)
-    // {
-    //     return player.returnCards();
-    // }
+    public void getCardsBack(Dealer dealer)
+    {
+        this.cards.add(givingCards(dealer));  
+    }
+
+    public Card givingCards(Player player)
+    {
+        return player.returnCards();
+    }
+
+        public Card givingCards(Dealer dealer)
+    {
+        return dealer.returnCards();
+    }
 }

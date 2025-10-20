@@ -111,10 +111,11 @@ public class Player
         }
     }
 
-    // public Card returnCards()
-    // {
-    //     Card topCard = this.hand.get(1);
-    //     this.hand.remove(1);  
-    //     return topCard;
-    // }
+    public Card returnCards()
+    {
+        Card topCard = this.hand.get(0);
+        this.hand.remove(0);  
+        return topCard;
+    }
+
 }

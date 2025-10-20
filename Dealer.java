@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 
+// import javax.smartcardio.Card;
+
 public class Dealer extends Player
 {
     private ArrayList<Card> hand = new ArrayList<>();
+
     public Dealer()
     {
         super("Robert");
@@ -22,6 +25,13 @@ public class Dealer extends Player
         {
             System.out.println("The dealers had is "+getHandValue());
         }
+    }
+
+    public Card returnCards()
+    {
+        Card topCard = this.hand.get(0);
+        this.hand.remove(0);  
+        return topCard;
     }
 
     public int getHandValue()
