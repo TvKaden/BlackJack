@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// import javax.smartcardio.Card;
-
 public class Player
 {
     private String name;
